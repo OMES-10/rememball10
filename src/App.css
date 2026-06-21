@@ -1,0 +1,619 @@
+.app {
+  min-height: 100vh;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  padding: 0;
+  color: white;
+
+  background-image:
+    linear-gradient(
+      rgba(3, 7, 18, 0.50),
+      rgba(3, 7, 18, 0.62)
+    ),
+    url("/campnou-2-2.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.level-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+}
+
+.level-card small {
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.sound-row {
+  width: 100%;
+  color: white;
+  cursor: pointer;
+}
+
+.toggle-off {
+  justify-content: flex-start;
+  background: #475569;
+}
+
+.toggle-on {
+  justify-content: flex-end;
+  background: #22c55e;
+}
+
+.playing-panel {
+  max-width: 900px;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.small-title {
+  margin: 0;
+  text-align: left;
+  font-size: 34px;
+}
+
+.game-theme {
+  margin: 4px 0 0;
+  color: #22d3ee;
+}
+
+.secondary-button {
+  padding: 12px 18px;
+  border: 1px solid #475569;
+  border-radius: 10px;
+  background: #111e2e;
+  color: white;
+  cursor: pointer;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 25px 0;
+}
+
+.stat {
+  padding: 14px 8px;
+  text-align: center;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  background: #0c1827;
+}
+
+.stat strong {
+  display: block;
+  color: #facc15;
+  font-size: 22px;
+}
+
+.stat span {
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.feedback-message {
+  min-height: 24px;
+  text-align: center;
+  color: #4ade80;
+  font-weight: bold;
+}
+
+.card-grid {
+  display: grid;
+  justify-content: center;
+  margin: 22px auto;
+}
+
+.easy-grid {
+  grid-template-columns: repeat(4, 90px);
+  gap: 14px;
+}
+
+.hard-grid {
+  grid-template-columns: repeat(6, 70px);
+  gap: 10px;
+}
+
+.memory-card {
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  perspective: 700px;
+}
+
+.card-inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.45s;
+  transform-style: preserve-3d;
+}
+
+.memory-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-back,
+.card-front {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  backface-visibility: hidden;
+}
+
+.card-back {
+  border: 2px solid #22c55e;
+  background:
+    linear-gradient(rgba(5, 12, 22, 0.25), rgba(5, 12, 22, 0.25)),
+    url("/messi.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: transparent;
+}
+
+.card-front {
+  transform: rotateY(180deg);
+  border: 2px solid #facc15;
+  background: #142237;
+  font-size: 34px;
+}
+
+.memory-card.matched .card-front {
+  border-color: #4ade80;
+  background: #123523;
+  box-shadow: 0 0 18px rgba(74, 222, 128, 0.45);
+}
+
+.restart-button {
+  display: block;
+  margin: 25px auto 0;
+  padding: 13px 20px;
+  border: 1px solid #475569;
+  border-radius: 10px;
+  background: #111e2e;
+  color: white;
+  cursor: pointer;
+}
+
+.final-panel {
+  max-width: 600px;
+  text-align: center;
+}
+
+.final-trophy {
+  font-size: 80px;
+}
+
+.final-score {
+  margin: 30px 0;
+  padding: 20px;
+  border: 1px solid #facc15;
+  border-radius: 15px;
+  background: rgba(250, 204, 21, 0.08);
+}
+
+.final-score span {
+  display: block;
+  color: #94a3b8;
+}
+
+.final-score strong {
+  display: block;
+  margin-top: 5px;
+  color: #facc15;
+  font-size: 50px;
+}
+
+.final-stats {
+  margin-bottom: 25px;
+}
+
+.full-button {
+  width: 100%;
+  margin-top: 12px;
+}
+
+@media (max-width: 700px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .easy-grid {
+    grid-template-columns: repeat(4, minmax(55px, 75px));
+    gap: 8px;
+  }
+
+  .hard-grid {
+    grid-template-columns: repeat(6, minmax(38px, 55px));
+    gap: 6px;
+  }
+
+  .hard-grid .card-front {
+    font-size: 24px;
+  }
+
+  .game-header {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .small-title {
+    font-size: 26px;
+  }
+}
+/* ===== AMÉLIORATION GÉNÉRALE DE L'INTERFACE ===== */
+
+
+
+/* Écran de jeu plus large */
+.playing-panel {
+  max-width: 900px;
+}
+
+/* Écran de victoire */
+.final-panel {
+  max-width: 620px;
+  text-align: center;
+  padding: 50px 45px;
+}
+
+.final-trophy {
+  margin-bottom: 8px;
+  font-size: 75px;
+}
+
+.final-panel h1 {
+  margin: 0;
+  color: #facc15;
+  font-size: 52px;
+  letter-spacing: 2px;
+}
+
+.final-panel .subtitle {
+  margin-top: 12px;
+  color: #e2e8f0;
+  font-size: 19px;
+}
+
+/* Bloc du score */
+.final-score {
+  margin: 32px 0;
+  padding: 28px;
+  border: 1px solid rgba(250, 204, 21, 0.8);
+  border-radius: 20px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(250, 204, 21, 0.18),
+    rgba(7, 17, 31, 0.9)
+  );
+
+  box-shadow:
+    inset 0 0 20px rgba(250, 204, 21, 0.08),
+    0 0 25px rgba(250, 204, 21, 0.15);
+}
+
+.final-score span {
+  display: block;
+  color: #cbd5e1;
+  font-size: 18px;
+}
+
+.final-score strong {
+  display: block;
+  margin-top: 5px;
+  color: #facc15;
+  font-size: 64px;
+}
+
+/* Statistiques finales */
+.final-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.final-stats p {
+  margin: 0;
+  padding: 18px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.75);
+  color: #cbd5e1;
+}
+
+.final-stats strong {
+  display: block;
+  margin-top: 6px;
+  color: white;
+  font-size: 20px;
+}
+
+/* Bouton principal */
+.start-button {
+  width: 100%;
+  margin-top: 18px;
+  padding: 18px;
+  border: none;
+  border-radius: 14px;
+
+  background: linear-gradient(135deg, #facc15, #f59e0b);
+  color: #07111f;
+
+  font-size: 21px;
+  font-weight: 900;
+  cursor: pointer;
+
+  box-shadow: 0 10px 28px rgba(250, 204, 21, 0.3);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.start-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 35px rgba(250, 204, 21, 0.42);
+}
+
+/* Bouton secondaire */
+.secondary-button {
+  padding: 14px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 12px;
+
+  background: rgba(15, 23, 42, 0.88);
+  color: white;
+
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+
+.secondary-button:hover {
+  border-color: #22c55e;
+  background: rgba(21, 128, 61, 0.25);
+}
+
+.full-button {
+  width: 100%;
+  margin-top: 12px;
+}
+
+/* Adaptation téléphone */
+@media (max-width: 600px) {
+  .game-panel,
+  .final-panel {
+    padding: 28px 18px;
+  }
+
+  .final-panel h1 {
+    font-size: 38px;
+  }
+
+  .final-stats {
+    grid-template-columns: 1fr;
+  }
+}
+/* ===== ACCUEIL SANS GRAND FOND GRIS ===== */
+
+.game-panel {
+  width: 100%;
+  max-width: 900px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 40px 24px;
+
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* Titre */
+.logo {
+  text-align: center;
+  font-size: 42px;
+  margin-bottom: 2px;
+}
+
+.game-panel h1 {
+  margin: 0;
+  text-align: center;
+  font-size: 58px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: #ffffff;
+
+  text-shadow:
+    0 3px 0 #111827,
+    0 6px 12px rgba(0, 0, 0, 0.65);
+}
+
+.subtitle {
+  margin: 8px 0 30px;
+  text-align: center;
+  color: #f8fafc;
+  font-size: 19px;
+  font-weight: 600;
+
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
+}
+
+/* Sections */
+.section {
+  margin-top: 26px;
+}
+
+.section h2 {
+  margin: 0 0 14px;
+  text-align: center;
+  color: #facc15;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.85);
+}
+
+/* Options */
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 16px;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.option-card,
+.level-card {
+  min-height: 88px;
+  padding: 16px;
+
+  border: 2px solid rgba(255, 255, 255, 0.28);
+  border-radius: 14px;
+
+  background: rgba(6, 16, 28, 0.72);
+  color: white;
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.option-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 16px;
+}
+
+.option-icon {
+  font-size: 34px;
+}
+
+.level-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.level-card small {
+  color: #cbd5e1;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.option-card.selected,
+.level-card.selected {
+  border-color: #4ade80;
+  background: rgba(20, 83, 45, 0.72);
+
+  box-shadow:
+    0 0 18px rgba(74, 222, 128, 0.3),
+    inset 0 0 16px rgba(74, 222, 128, 0.08);
+}
+
+.option-card:hover,
+.level-card:hover {
+  transform: translateY(-2px);
+  border-color: #22c55e;
+}
+
+/* Son */
+.sound-row {
+  max-width: 620px;
+  width: 100%;
+  margin: 24px auto 0;
+  padding: 14px 18px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border: 2px solid rgba(255, 255, 255, 0.22);
+  border-radius: 12px;
+
+  background: rgba(6, 16, 28, 0.72);
+  color: white;
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  font-size: 16px;
+}
+
+/* Bouton principal */
+.start-button {
+  display: block;
+  width: min(620px, 100%);
+  margin: 26px auto 0;
+  padding: 18px;
+
+  border: none;
+  border-radius: 14px;
+
+  background: linear-gradient(135deg, #facc15, #f59e0b);
+  color: #07111f;
+
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 1px;
+
+  cursor: pointer;
+  box-shadow:
+    0 10px 30px rgba(250, 204, 21, 0.35),
+    0 0 20px rgba(250, 204, 21, 0.2);
+}
+
+.start-button:hover {
+  transform: translateY(-3px);
+}
+
+/* Mobile */
+@media (max-width: 650px) {
+  .game-panel h1 {
+    font-size: 40px;
+  }
+
+  .options-grid {
+    grid-template-columns: 1fr;
+  }
+}
