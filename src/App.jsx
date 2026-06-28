@@ -104,7 +104,7 @@ function playSound(fileName) {
     audio.volume = 0.2;
   } else if (fileName === "success.mp3") {
     audio.volume = 0.45;
-  } else {
+  } else if (fileName === "fahh.mp3"){
     audio.volume = 0.5;
   }
 
