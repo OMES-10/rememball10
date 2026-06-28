@@ -97,7 +97,8 @@ function App() {
 function playSound(fileName) {
   if (!sound) return;
 
-  const audio = new Audio(`/sounds/${fileName}`);
+  const audioPath = `${import.meta.env.BASE_URL}sounds/${fileName}`;
+  const audio = new Audio(audioPath);
 
   if (fileName === "flip.mp3") {
     audio.volume = 0.2;
@@ -108,7 +109,7 @@ function playSound(fileName) {
   }
 
   audio.play().catch((error) => {
-    console.log("Erreur audio :", error);
+    console.error("Erreur audio :", audioPath, error);
   });
 }
   const [cards, setCards] = useState([]);
